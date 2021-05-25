@@ -1,0 +1,2 @@
+#ignores compiled version of C++ code
+*.o
