@@ -1,10 +1,7 @@
  #include <iostream>
 using namespace std;
 
-//single line comment
-/*Multi Line comment
- * Haha
- */
+//Data Type Reference
 
 int main() {
 	int myNum = 5;               // Integer (whole number)
