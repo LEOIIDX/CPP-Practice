@@ -1,5 +1,5 @@
 #!/bin/bash
 
-gcc -ofunctions.o functions.cpp -lstdc++
+g++ -ofunctions.o functions.cpp 
 
 ./functions.o
