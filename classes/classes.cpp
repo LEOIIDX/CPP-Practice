@@ -16,6 +16,7 @@ class MyClass //The class
 
 int main() 
 {
+	cout << "Classes Section 1\n\n";
 	MyClass myObj; //Creates an object from class
 
 //	Access atributes and set the variables
