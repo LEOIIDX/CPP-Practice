@@ -1,2 +1,5 @@
 #ignores compiled version of C++ code
 *.o
+
+#ignore these directories
+sdl/sdlExamples/
