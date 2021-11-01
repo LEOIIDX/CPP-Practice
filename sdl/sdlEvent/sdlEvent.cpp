@@ -60,5 +60,76 @@ bool loadMedia()
 //	Loading success flag
 	bool success = true;
 
-//	
+//	Load splash image
+	gXOut = SDL_LoadBMP("x.bmp");
+
+	if(gXOut == NULL)
+	{
+		printf("Unable to load image %s! SDL Error: %s\n", "x.bmp", SDL_GetError());
+		success = false;
+	}
+
+	return success;
+}
+
+void close()
+{
+//	Deallocate surface
+	SDL_FreeSurface(gXOut);
+	gXOut = NULL;
+
+//	Destroy window
+	SDL_DestroyWindow(gWindow);
+
+//	Quit SDL subsystems
+	SDL_Quit();
+}
+
+int main(int argc, char* args[])
+{
+//	Starts SDL and creates the window
+	if(!init())
+	{
+		printf("Failed to init!\n");
+	}
+	else
+	{
+//		load media
+		if(!loadMedia())
+		{
+			printf("Failed to load media!\n");
+		}
+		else
+		{
+//			Main loop flag
+			bool quit = false;
+
+//			Event handler
+			SDL_Event e;
+
+//			While application is running
+			while(!quit)
+			{
+//				Handle events on queue
+				while(SDL_PollEvent(&e) != 0)
+				{
+//					User requests quit
+					if(e.type == SDL_QUIT)
+					{
+						quit = true;
+					}
+				}
+
+//			Apply the image
+			SDL_BlitSurface(gXOut, NULL, gScreenSurface, NULL);
+
+//			Update the surface
+			SDL_UpdateWindowSurface(gWindow);
+			}
+		}
+	}
+//	Frees resources and closes SDL
+	close();
+
+	return 0;
 }
